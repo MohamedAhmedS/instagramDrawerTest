@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/bigParent"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <RelativeLayout
+        android:id="@+id/holder1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_dodgeInsetEdges="right">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        android:background="#292929"
+        android:gravity="right|center"
+        android:elevation="3dp">
+
+        <ImageView
+            android:id="@+id/burger"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/burger"
+            android:layout_marginRight="10dp"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_dodgeInsetEdges="right">
+
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center"
+            android:background="#292929" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Username"
+            android:textColor="#000000"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </LinearLayout>
+    </RelativeLayout>
+    <LinearLayout
+        android:id="@+id/right_sheet"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_border"
+        app:layout_insetEdge="right"
+        android:orientation="vertical"
+        android:layout_gravity="right">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:innerRadius="0dp"
+            android:shape="ring"
+            android:background="#fff"
+            android:layout_centerHorizontal="true"
+            android:thicknessRatio="1.9"
+            android:layout_marginLeft="15dp"
+            app:cardCornerRadius="1000dp"
+            >
+            <ImageView
+                android:layout_width="?actionBarSize"
+                android:layout_height="?actionBarSize"
+                android:background="#ffffff"/>
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=" Username"
+            android:textColor="#ffffff"
+            android:ellipsize="none"
+            android:drawableLeft="@drawable/account"
+            android:singleLine="true"
+            android:padding="15dp"
+            android:textSize="16sp"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="#dcdcdc"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=" E-mail"
+            android:textColor="#ffffff"
+            android:ellipsize="none"
+            android:drawableLeft="@drawable/email"
+            android:singleLine="true"
+            android:padding="15dp"
+            android:textSize="16sp"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=" Activity 1"
+            android:ellipsize="none"
+            android:singleLine="true"
+            android:drawableLeft="@drawable/account"
+            android:textColor="#ffffff"
+            android:padding="15dp"
+            android:textSize="16sp"/>
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="#dcdcdc"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="#dcdcdc"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="?actionBarSize"
+            android:text=" settings"
+            android:ellipsize="none"
+            android:singleLine="true"
+            android:layout_gravity="bottom"
+            android:gravity="center|left"
+            android:drawableLeft="@drawable/settings"
+            android:textColor="#ffffff"
+            android:padding="15dp"
+            android:textSize="16sp"/>
+    </LinearLayout>
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
