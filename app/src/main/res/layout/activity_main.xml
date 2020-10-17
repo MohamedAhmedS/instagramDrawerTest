@@ -13,132 +13,163 @@
         android:layout_height="match_parent"
         app:layout_dodgeInsetEdges="right">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="?actionBarSize"
-        android:background="#292929"
-        android:gravity="right|center"
-        android:elevation="3dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="?actionBarSize"
+            android:background="#292929"
+            android:elevation="3dp"
+            android:gravity="right|center">
 
-        <ImageView
-            android:id="@+id/burger"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:src="@drawable/burger"
-            android:layout_marginRight="10dp"
-            />
+            <ImageView
+                android:id="@+id/burger"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginRight="10dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/burger" />
 
-    </LinearLayout>
+        </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_gravity="center"
-        android:gravity="center"
-        android:orientation="vertical"
-        app:layout_dodgeInsetEdges="right">
-
-        <ImageView
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:layout_gravity="center"
-            android:background="#292929" />
+            android:gravity="center"
+            android:orientation="vertical"
+            app:layout_dodgeInsetEdges="right">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="Username"
-            android:textColor="#000000"
-            android:textSize="30sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-    </LinearLayout>
+
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_gravity="center"
+                android:background="#292929" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Username"
+                android:textColor="#000000"
+                android:textSize="30sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </LinearLayout>
     </RelativeLayout>
+
     <LinearLayout
         android:id="@+id/right_sheet"
-        android:layout_width="0dp"
+        android:layout_width="250dp"
         android:layout_height="match_parent"
+        android:layout_gravity="right"
         android:background="@drawable/bg_border"
-        app:layout_insetEdge="right"
         android:orientation="vertical"
-        android:layout_gravity="right">
+        app:layout_insetEdge="right">
 
-        <androidx.cardview.widget.CardView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:innerRadius="0dp"
-            android:shape="ring"
-            android:background="#fff"
-            android:layout_centerHorizontal="true"
-            android:thicknessRatio="1.9"
-            android:layout_marginLeft="15dp"
-            app:cardCornerRadius="1000dp"
-            >
-            <ImageView
-                android:layout_width="?actionBarSize"
-                android:layout_height="?actionBarSize"
-                android:background="#ffffff"/>
-        </androidx.cardview.widget.CardView>
 
-        <TextView
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text=" Username"
-            android:textColor="#ffffff"
-            android:ellipsize="none"
-            android:drawableLeft="@drawable/account"
-            android:singleLine="true"
-            android:padding="15dp"
-            android:textSize="16sp"/>
+            android:layout_height="130dp"
+            android:orientation="vertical">
+            <ImageView
+                android:id="@+id/backgroudImage"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/ribble"
+                android:outlineProvider="bounds"
+                android:adjustViewBounds="true"
+                android:scaleType="centerCrop"
+                />
+            <FrameLayout
+                android:id="@+id/frameLayout"
+                android:layout_width="64dp"
+                android:layout_height="60dp"
+                android:layout_marginStart="15dp"
+                android:background="@drawable/border"
+                android:padding="2dp">
+
+                <ImageView
+                    android:id="@+id/imageView"
+                    android:layout_width="?actionBarSize"
+                    android:layout_height="?actionBarSize"
+                    android:layout_gravity="center"
+                    android:background="@drawable/bordershape"
+                    android:outlineProvider="background"
+                    android:scaleType="centerCrop" />
+            </FrameLayout>
+
+
+            <TextView
+                android:id="@+id/userName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="none"
+                android:paddingLeft="15dp"
+                android:paddingTop="15dp" android:layout_below="@id/frameLayout"
+                android:paddingBottom="5dp"
+                android:singleLine="true"
+                android:text=" Username"
+                android:textColor="#ffffff"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:ellipsize="none"
+                android:paddingLeft="15dp" android:layout_below="@id/userName"
+                android:singleLine="true"
+                android:text=" E-mail"
+                android:textColor="#ffffff"
+                android:textSize="14sp" />
+
+
+        </RelativeLayout>
+
         <View
             android:layout_width="match_parent"
             android:layout_height="0.5dp"
-            android:background="#dcdcdc"/>
+            android:background="#dcdcdc" />
+
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text=" E-mail"
-            android:textColor="#ffffff"
-            android:ellipsize="none"
-            android:drawableLeft="@drawable/email"
-            android:singleLine="true"
-            android:padding="15dp"
-            android:textSize="16sp"/>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text=" Activity 1"
-            android:ellipsize="none"
-            android:singleLine="true"
+            android:layout_height="?actionBarSize"
             android:drawableLeft="@drawable/account"
-            android:textColor="#ffffff"
+            android:ellipsize="none"
             android:padding="15dp"
-            android:textSize="16sp"/>
+            android:singleLine="true"
+            android:text=" Activity 1"
+            android:textColor="#ffffff"
+            android:textSize="16sp" />
+
         <View
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:background="#dcdcdc"/>
+            android:background="#dcdcdc" />
+
         <View
             android:layout_width="match_parent"
             android:layout_height="0.5dp"
-            android:background="#dcdcdc"/>
+            android:background="#dcdcdc" />
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="?actionBarSize"
-            android:text=" settings"
-            android:ellipsize="none"
-            android:singleLine="true"
             android:layout_gravity="bottom"
-            android:gravity="center|left"
             android:drawableLeft="@drawable/settings"
-            android:textColor="#ffffff"
+            android:ellipsize="none"
+            android:gravity="center|left"
             android:padding="15dp"
-            android:textSize="16sp"/>
+            android:singleLine="true"
+            android:text=" settings"
+            android:textColor="#ffffff"
+            android:textSize="16sp" />
     </LinearLayout>
 
 
