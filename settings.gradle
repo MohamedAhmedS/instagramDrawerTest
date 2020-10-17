@@ -1,2 +1,3 @@
+include ':InstaDrawerMenu'
 include ':app'
 rootProject.name = "instagramDrawerTest"
