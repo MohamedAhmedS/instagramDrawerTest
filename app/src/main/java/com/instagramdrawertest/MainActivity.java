@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
         imageView = findViewById(R.id.imageView);
         backgroundImage = findViewById(R.id.backgroudImage);
 
-        imageView.setImageResource(R.mipmap.gold);
+        imageView.setImageResource(R.mipmap.placeholder2);
         imageView.setClipToOutline(true);
 //        backgroundImage.setImageResource(R.mipmap.gold);
 //        backgroundImage.setClipToOutline(true);
@@ -94,7 +94,7 @@ public class MainActivity extends AppCompatActivity {
                         }
                     });
 
-                    anim.setDuration(500);
+                    anim.setDuration(1200);
                     anim.start();
                 } else if (right_sheet.getMeasuredWidth() == newWidth) {
 
@@ -108,7 +108,7 @@ public class MainActivity extends AppCompatActivity {
                             right_sheet.setLayoutParams(layoutParams);
                         }
                     });
-                    anim.setDuration(300);
+                    anim.setDuration(1200);
                     anim.start();
                 }
 
@@ -130,7 +130,7 @@ public class MainActivity extends AppCompatActivity {
                                 right_sheet.setLayoutParams(layoutParams);
                             }
                         });
-                        anim.setDuration(300);
+                        anim.setDuration(1200);
                         anim.start();
                     }
                 }
