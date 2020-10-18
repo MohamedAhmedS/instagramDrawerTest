@@ -74,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
         int height = displayMetrics.heightPixels;
         int width = displayMetrics.widthPixels;
 
-        final int newWidth = (int)(width*0.6);
+        final int newWidth = (int)(width*0.7);
         final int normalWidth = 0;
 
 
