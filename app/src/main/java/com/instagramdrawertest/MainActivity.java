@@ -163,6 +163,40 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+
+
+    @Override
+    public void onBackPressed()
+    {
+        DisplayMetrics displayMetrics = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+        int height = displayMetrics.heightPixels;
+        int width = displayMetrics.widthPixels;
+
+        final int newWidth = (int)(width*0.6);
+        final int normalWidth = 0;
+
+        if (right_sheet.getMeasuredWidth() == newWidth) {
+            ValueAnimator anim = ValueAnimator.ofInt(right_sheet.getMeasuredWidth(), normalWidth);
+            anim.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+                @Override
+                public void onAnimationUpdate(ValueAnimator valueAnimator) {
+                    int val = (Integer) valueAnimator.getAnimatedValue();
+                    ViewGroup.LayoutParams layoutParams = right_sheet.getLayoutParams();
+                    layoutParams.width = val;
+                    right_sheet.setLayoutParams(layoutParams);
+                }
+            });
+            anim.setDuration(1200);
+            anim.start();
+        }
+
+        if(right_sheet.getMeasuredWidth() == normalWidth){
+            super.onBackPressed();
+        }
+
+    }
+
 //    public static Bitmap getRoundedCornerBitmap(Bitmap bitmap, int pixels) {
 //        Bitmap output = Bitmap.createBitmap(bitmap.getWidth(), bitmap
 //                .getHeight(), Bitmap.Config.ARGB_8888);
