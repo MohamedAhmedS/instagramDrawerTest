@@ -49,8 +49,8 @@ public class MainActivity extends AppCompatActivity {
 
         imageView.setImageResource(R.mipmap.gold);
         imageView.setClipToOutline(true);
-        backgroundImage.setImageResource(R.mipmap.gold);
-        backgroundImage.setClipToOutline(true);
+//        backgroundImage.setImageResource(R.mipmap.gold);
+//        backgroundImage.setClipToOutline(true);
 
 //        Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.mipmap.gold);
 //        imageView.setImageBitmap(getRoundedCornerBitmap(bitmap, 360));
@@ -93,7 +93,8 @@ public class MainActivity extends AppCompatActivity {
                             right_sheet.setLayoutParams(layoutParams);
                         }
                     });
-                    anim.setDuration(300);
+
+                    anim.setDuration(500);
                     anim.start();
                 } else if (right_sheet.getMeasuredWidth() == newWidth) {
 
