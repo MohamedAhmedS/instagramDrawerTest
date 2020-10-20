@@ -9,11 +9,14 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.ViewAnimationUtils;
 import android.view.ViewTreeObserver;
 import android.view.animation.AccelerateInterpolator;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -35,6 +38,14 @@ public class RevealActivity extends AppCompatActivity {
 
         btn = findViewById(R.id.btn);
         hideBtn();
+//        Animation myAnim = AnimationUtils.loadAnimation(RevealActivity.this, R.anim.scale_down);
+//        btn.startAnimation(myAnim);
+
+//        new Handler().postDelayed(new Runnable() {
+//            @Override
+//            public void run() {
+//                btn.setVisibility(View.GONE); }
+//        }, 500);
 
 //        DisplayMetrics displayMetrics = new DisplayMetrics();
 //        getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
@@ -52,7 +63,10 @@ public class RevealActivity extends AppCompatActivity {
     public void onBackPressed()
     {
         mRevealAnimation.unRevealActivity();
-        revealBtn();
+
+//        Animation myAnim = AnimationUtils.loadAnimation(RevealActivity.this, R.anim.scale_up);
+//        btn.startAnimation(myAnim);
+
     }
 
     private void revealBtn() {
@@ -75,10 +89,19 @@ public class RevealActivity extends AppCompatActivity {
         view.post(new Runnable() {
             @Override
             public void run() {
-                int cx = view.getWidth() / 2;
-                int cy = view.getHeight() / 2;
-                float initialRadius = (float) Math.hypot(cx, cy);
-                Animator anim = ViewAnimationUtils.createCircularReveal(view, cx, cy, initialRadius, 0);
+
+                // get the center for the clipping circle
+                int cx = view.getMeasuredWidth() / 2;
+                int cy = view.getMeasuredHeight() / 2;
+
+                // get the initial radius for the clipping circle
+                int initialRadius = view.getWidth();
+
+                // create the animation (the final radius is zero)
+                Animator anim =
+                        ViewAnimationUtils.createCircularReveal(view, cx, cy, initialRadius, 0);
+
+                // make the view invisible when the animation is done
                 anim.addListener(new AnimatorListenerAdapter() {
                     @Override
                     public void onAnimationEnd(Animator animation) {
@@ -86,10 +109,30 @@ public class RevealActivity extends AppCompatActivity {
                         view.setVisibility(View.INVISIBLE);
                     }
                 });
-                anim.setDuration(1000);
+
+                // start the animation
                 anim.start();
             }
         });
+//        view.post(new Runnable() {
+//            @Override
+//            public void run() {
+//        float finalRadius = (float) (Math.max(view.getWidth(), view.getHeight()) * 1.1);
+//        Animator circularReveal = ViewAnimationUtils.createCircularReveal(
+//                view, (int) view.getX(), (int) view.getY(), finalRadius, 0);
+//
+//        circularReveal.setDuration(500);
+//        circularReveal.addListener(new AnimatorListenerAdapter() {
+//            @Override
+//            public void onAnimationEnd(Animator animation) {
+//                view.setVisibility(View.INVISIBLE);
+////                RevealActivity.this.overridePendingTransition(0, 0);
+//            }
+//        });
+//
+//        circularReveal.start();
+//            }
+//        });
     }
 //    private void startRevealActivity(View v) {
 //        //calculates the center of the View v you are passing

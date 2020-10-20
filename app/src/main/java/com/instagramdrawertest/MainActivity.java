@@ -1,9 +1,11 @@
 package com.instagramdrawertest;
 
+import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
+import androidx.core.app.ActivityOptionsCompat;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -30,6 +32,8 @@ import android.view.ViewAnimationUtils;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.view.animation.AccelerateInterpolator;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -44,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
     private RelativeLayout holder1;
     private Context context;
     private TextView btn;
+    private int width;
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
@@ -62,10 +67,15 @@ public class MainActivity extends AppCompatActivity {
         imageView.setImageResource(R.mipmap.placeholder2);
         imageView.setClipToOutline(true);
 
+//        Animation myAnim = AnimationUtils.loadAnimation(MainActivity.this, R.anim.scale_up);
+//        btn.startAnimation(myAnim);
+
         btn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 startRevealActivity2(v);
 //                hideBtn();
+//                Animation myAnim = AnimationUtils.loadAnimation(MainActivity.this, R.anim.scale_down);
+//                btn.startAnimation(myAnim);
             }
         });
 
@@ -97,7 +107,7 @@ public class MainActivity extends AppCompatActivity {
         DisplayMetrics displayMetrics = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
         int height = displayMetrics.heightPixels;
-        int width = displayMetrics.widthPixels;
+        width = displayMetrics.widthPixels;
 
         final int newWidth = (int)(width*0.6);
         final int normalWidth = 0;
@@ -165,6 +175,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+    }
 
     @Override
     public void onBackPressed()
@@ -255,9 +270,21 @@ public class MainActivity extends AppCompatActivity {
 //            }
 //        });
 //    }
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 1) {
+            if(resultCode == RESULT_OK) {
+                String myStr=data.getStringExtra("MyData");
+            }
+        }
+    }
+
     private void startRevealActivity(View v) {
         //calculates the center of the View v you are passing
-        int revealX = (int) (v.getX() + (v.getWidth() / 2) * 7.3);
+        int revealX = (int) (v.getX() + (v.getWidth() / 2) + (width * 0.4) );
         int revealY = (int) (v.getY() + (v.getHeight() / 2));
 
         //create an intent, that launches the second activity and pass the x and y coordinates
@@ -273,13 +300,16 @@ public class MainActivity extends AppCompatActivity {
     }
     private void startRevealActivity2(View v) {
         //calculates the center of the View v you are passing
-        int revealX = (int) (v.getX() + (v.getWidth() / 2) * 2.5);
+        int revealX = (int) (v.getX() + (v.getWidth() / 2) + (width * 0.4));
         int revealY = (int) (v.getY() + (v.getHeight() / 2));
 
         //create an intent, that launches the second activity and pass the x and y coordinates
         Intent intent = new Intent(this, RevealActivity.class);
         intent.putExtra(RevealAnimation.EXTRA_CIRCULAR_REVEAL_X, revealX);
         intent.putExtra(RevealAnimation.EXTRA_CIRCULAR_REVEAL_Y, revealY);
+
+        ActivityOptionsCompat options = ActivityOptionsCompat.
+                makeSceneTransitionAnimation(MainActivity.this, (View)btn, "menu_button");
 
         //just start the activity as an shared transition, but set the options bundle to null
         ActivityCompat.startActivity(this, intent, null);
@@ -334,7 +364,7 @@ public class MainActivity extends AppCompatActivity {
 
                 // create the animator for this view (the start radius is zero)
                 Animator circularReveal = ViewAnimationUtils.createCircularReveal(mView, x, y, 0, finalRadius);
-                circularReveal.setDuration(1000);
+                circularReveal.setDuration(500);
                 circularReveal.setInterpolator(new AccelerateInterpolator());
 
                 // make the view visible and start the animation
@@ -353,7 +383,7 @@ public class MainActivity extends AppCompatActivity {
                 Animator circularReveal = ViewAnimationUtils.createCircularReveal(
                         mView, revealX, revealY, finalRadius, 0);
 
-                circularReveal.setDuration(1000);
+                circularReveal.setDuration(500);
                 circularReveal.addListener(new AnimatorListenerAdapter() {
                     @Override
                     public void onAnimationEnd(Animator animation) {
