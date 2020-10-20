@@ -65,6 +65,7 @@ public class MainActivity extends AppCompatActivity {
         btn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 startRevealActivity2(v);
+//                hideBtn();
             }
         });
 
@@ -118,7 +119,7 @@ public class MainActivity extends AppCompatActivity {
                         }
                     });
 
-                    anim.setDuration(1200);
+                    anim.setDuration(2000);
                     anim.start();
                 } else if (right_sheet.getMeasuredWidth() == newWidth) {
 
@@ -132,7 +133,7 @@ public class MainActivity extends AppCompatActivity {
                             right_sheet.setLayoutParams(layoutParams);
                         }
                     });
-                    anim.setDuration(1200);
+                    anim.setDuration(2000);
                     anim.start();
                 }
 
@@ -154,7 +155,7 @@ public class MainActivity extends AppCompatActivity {
                                 right_sheet.setLayoutParams(layoutParams);
                             }
                         });
-                        anim.setDuration(1200);
+                        anim.setDuration(2000);
                         anim.start();
                     }
                 }
@@ -218,7 +219,42 @@ public class MainActivity extends AppCompatActivity {
 //
 //        return output;
 //    }
-
+//private void revealBtn() {
+//    final View view = findViewById(R.id.btn);
+//    view.post(new Runnable() {
+//        @Override
+//        public void run() {
+//            int cx = view.getWidth() / 2;
+//            int cy = view.getHeight() / 2;
+//            float finalRadius = (float) Math.hypot(cx, cy);
+//            Animator anim = ViewAnimationUtils.createCircularReveal(view, cx, cy, 0, finalRadius);
+//            view.setVisibility(View.VISIBLE);
+//            anim.setDuration(300);
+//            anim.start();
+//        }
+//    });
+//}
+//    private void hideBtn() {
+//        final View view = findViewById(R.id.btn);
+//        view.post(new Runnable() {
+//            @Override
+//            public void run() {
+//                int cx = view.getWidth() / 2;
+//                int cy = view.getHeight() / 2;
+//                float initialRadius = (float) Math.hypot(cx, cy);
+//                Animator anim = ViewAnimationUtils.createCircularReveal(view, cx, cy, initialRadius, 0);
+//                anim.addListener(new AnimatorListenerAdapter() {
+//                    @Override
+//                    public void onAnimationEnd(Animator animation) {
+//                        super.onAnimationEnd(animation);
+//                        view.setVisibility(View.INVISIBLE);
+//                    }
+//                });
+//                anim.setDuration(500);
+//                anim.start();
+//            }
+//        });
+//    }
     private void startRevealActivity(View v) {
         //calculates the center of the View v you are passing
         int revealX = (int) (v.getX() + (v.getWidth() / 2) * 7.3);
@@ -298,7 +334,7 @@ public class MainActivity extends AppCompatActivity {
 
                 // create the animator for this view (the start radius is zero)
                 Animator circularReveal = ViewAnimationUtils.createCircularReveal(mView, x, y, 0, finalRadius);
-                circularReveal.setDuration(300);
+                circularReveal.setDuration(1000);
                 circularReveal.setInterpolator(new AccelerateInterpolator());
 
                 // make the view visible and start the animation
@@ -317,7 +353,7 @@ public class MainActivity extends AppCompatActivity {
                 Animator circularReveal = ViewAnimationUtils.createCircularReveal(
                         mView, revealX, revealY, finalRadius, 0);
 
-                circularReveal.setDuration(300);
+                circularReveal.setDuration(1000);
                 circularReveal.addListener(new AnimatorListenerAdapter() {
                     @Override
                     public void onAnimationEnd(Animator animation) {
